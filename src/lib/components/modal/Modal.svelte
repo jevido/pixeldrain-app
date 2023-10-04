@@ -4,7 +4,7 @@
 
 {#if modalShown}
 	<div
-		class="fixed top-0 left-0 h-screen w-screen bg-gray-600/80 z-50 flex items-center"
+		class="fixed top-0 left-0 h-screen w-screen bg-background/60 z-50 flex items-center rounded"
 		tabindex="-1"
 		on:click={() => {
 			modalShown = false;

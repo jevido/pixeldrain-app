@@ -43,7 +43,7 @@
 			<div class="flex-1 h-full py-16">
 				<div class="text-center">
 					<img class="mb-4" src="/branding/header_orbitron.webp" alt="pixeldrain logo" />
-					<p class="mt-3 font-medium text-slate-100 text-center">Sign in with your account</p>
+					<p class="mt-3 font-medium text-center">Sign in with your account</p>
 					{#if message !== ''}
 						<span class="text-destructive">{message}</span>
 					{/if}

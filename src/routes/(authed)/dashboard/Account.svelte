@@ -1,6 +1,7 @@
 <script>
-	import { AlertCircle, X } from '$lib/icons';
 	import { logout } from '$lib/api/pixeldrain';
+	import { Button } from '$lib/primitives';
+	import { AlertCircle, X } from '$lib/icons';
 	import { formatBytes } from '$lib/util';
 	import { Modal } from '$lib/components/modal';
 
@@ -20,7 +21,7 @@
 
 <Modal bind:modalShown>
 	<button
-		class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+		class="absolute top-3 right-2.5 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
 		data-modal-hide="popup-modal"
 		on:click={() => (modalShown = false)}
 	>
@@ -28,67 +29,50 @@
 		<span class="sr-only">Close modal</span>
 	</button>
 	<div class="p-6 text-center">
-		<AlertCircle class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" />
-		<h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-			Are you sure you want to logout
-		</h3>
-		<button
-			data-modal-hide="popup-modal"
-			class="text-white bg-red-600 hover:bg-red-800 focus:outline-none font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
-			on:click={logout}
-		>
-			Confirm
-		</button>
-		<button
-			data-modal-hide="popup-modal"
-			class="text-gray-500 bg-white hover:bg-gray-100 focus:outline-none rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600"
-			on:click={() => (modalShown = false)}
-		>
+		<AlertCircle class="mx-auto mb-4 w-14 h-14" />
+		<h3 class="mb-5 text-lg font-normal">Are you sure you want to logout</h3>
+		<Button variant="destructive" on:click={logout}>Confirm</Button>
+		<Button class="bg-gray-700 text-foreground" on:click={() => (modalShown = false)}>
 			No, cancel
-		</button>
+		</Button>
 	</div>
 </Modal>
 
-<div
-	class="relative w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
->
-	<div class="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800">
+<div class="relative w-full shadow">
+	<div class="p-4 rounded-lg border border-border bg-secondary">
 		<h5 class="text-2xl font-extrabold text-center">Statistics</h5>
 		<dl
 			class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto sm:grid-cols-3 xl:grid-cols-6 sm:p-8"
 		>
 			<div class="flex flex-col items-center justify-center">
 				<dt class="mb-2 text-2xl font-extrabold text-center">{spaceUsed}</dt>
-				<dd class="text-gray-500 dark:text-gray-400">Space used</dd>
+				<dd class="text-muted-foreground">Space used</dd>
 			</div>
 			<div class="flex flex-col items-center justify-center">
 				<dt class="mb-2 text-2xl font-extrabold text-center">{spaceRemaining}</dt>
-				<dd class="text-gray-500 dark:text-gray-400">remaining</dd>
+				<dd class="text-muted-foreground">remaining</dd>
 			</div>
 			<div class="flex flex-col items-center justify-center">
 				<dt class="mb-2 text-2xl font-extrabold text-center">{bandwidthUsed}</dt>
-				<dd class="text-gray-500 dark:text-gray-400">Bandwidth</dd>
+				<dd class="text-muted-foreground">Bandwidth</dd>
 			</div>
 			<div class="flex flex-col items-center justify-center">
 				<dt class="mb-2 text-2xl font-extrabold text-center">{bandwidthRemaining}</dt>
-				<dd class="text-gray-500 dark:text-gray-400">remaining</dd>
+				<dd class="text-muted-foreground">remaining</dd>
 			</div>
 			<div class="flex flex-col items-center justify-center">
 				<dt class="mb-2 text-2xl font-extrabold text-center">{files.files.length}</dt>
-				<dd class="text-gray-500 dark:text-gray-400">Files</dd>
+				<dd class="text-muted-foreground">Files</dd>
 			</div>
 			<div class="flex flex-col items-center justify-center">
 				<dt class="mb-2 text-2xl font-extrabold text-center">{fileSizeLimit}</dt>
-				<dd class="text-gray-500 dark:text-gray-400">file size limit</dd>
+				<dd class="text-muted-foreground">file size limit</dd>
 			</div>
 		</dl>
 		<div class="w-full justify-center flex">
-			<button
-				class="bg-red-600 hover:bg-red-700 rounded-md p-2 px-4"
-				on:click={() => (modalShown = true)}
-			>
+			<Button variant="destructive" size="large" on:click={() => (modalShown = true)}>
 				logout
-			</button>
+			</Button>
 		</div>
 	</div>
 </div>

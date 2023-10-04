@@ -7,11 +7,6 @@ import { deleteCookie,getCookie } from '$lib/util';
 class Api {
 	constructor() {
 		this.endpoint = `/api/`;
-
-		// Todo: this is real jank
-		if (!getCookie('pd_auth_key')) {
-			goto('/login')
-		}
 	}
 
 	async get(resource) {
@@ -122,7 +117,7 @@ const Files = () => {
 							files[index].id = JSON.parse(xhr.response).id;
 							// Todo: We don't get a lot of information here
 							// Maybe add the classic throttle function to retrieve the new files
-							// And the pushed file object, does not contain the mimetype
+							// And the pushed file object does not contain the mimetype
 							return files;
 						});
 					} else {

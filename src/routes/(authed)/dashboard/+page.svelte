@@ -11,8 +11,8 @@
 		const data = [await api.get('user'), await api.get('user/files')];
 		return data;
 	}
-</script>
 
+</script>
 
 {#await load()}
 	<div class="flex h-full items-center justify-center">
@@ -30,7 +30,3 @@
 		</section>
 	</div>
 {/await}
-
-<svelte:head>
-	<title>Dashboard</title>
-</svelte:head>
