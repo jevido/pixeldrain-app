@@ -33,7 +33,7 @@
 	// Authentication is done per api-request,
 	// so this will just send you back to login in-case of authentication falsication
 	if (browser && getCookie('pd_auth_key')) {
-		goto('/home');
+		goto('/dashboard');
 	}
 </script>
 
@@ -64,7 +64,7 @@
 								class="bg-input border border-border text-sm rounded-lg focus:outline-none block w-full pl-10 p-2.5"
 								placeholder="name@gmail.com"
 								autocapitalize="none"
-                                required
+								required
 								bind:value={username}
 							/>
 						</div>
@@ -89,7 +89,7 @@
 									id="password"
 									class="bg-input border border-border text-sm rounded-lg focus:outline-none block w-full pl-10 p-2.5"
 									placeholder="******"
-                                    required
+									required
 									bind:value={password}
 								/>
 							</div>
@@ -123,10 +123,6 @@
 		</div>
 	</div>
 </div>
-
-<svelte:head>
-	<title>Login ~ PixelDrain</title>
-</svelte:head>
 
 <style>
 	input:autofill {

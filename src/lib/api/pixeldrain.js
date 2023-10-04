@@ -2,7 +2,7 @@ import { goto } from '$app/navigation';
 import { page } from '$app/stores';
 import { writable, get } from 'svelte/store';
 
-import { deleteCookie,getCookie } from '$lib/util';
+import { deleteCookie } from '$lib/util';
 
 class Api {
 	constructor() {
