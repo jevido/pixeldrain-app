@@ -43,7 +43,7 @@
 
 <div class="relative w-full shadow">
 	<div class="p-4 rounded-lg border border-border bg-secondary">
-		<h5 class="text-2xl font-extrabold text-center">Statistics</h5>
+		<h5 class="text-2xl font-extrabold text-center  pointer-events-none select-none">Statistics</h5>
 		<dl
 			class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto sm:grid-cols-3 xl:grid-cols-6 sm:p-8"
 		>
