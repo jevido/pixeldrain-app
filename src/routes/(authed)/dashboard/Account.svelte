@@ -17,6 +17,9 @@
 	$: fileSizeLimit = formatBytes(user?.subscription.file_size_limit);
 
 	let modalShown = false;
+
+	// Todo: Show logout button without the requirement of statistics.
+	// If an error occurs, you should be able to log out
 </script>
 
 <Modal bind:modalShown>

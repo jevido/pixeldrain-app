@@ -4,6 +4,9 @@ import { writable, get } from 'svelte/store';
 
 import { deleteCookie } from '$lib/util';
 
+// todo: handle errors
+// - error on auth_key revoked
+
 class Api {
 	constructor() {
 		this.endpoint = `/api/`;

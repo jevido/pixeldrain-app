@@ -1,7 +1,7 @@
 <script>
 	import '../app.postcss';
 
-	let darkMode = window?.matchMedia && window?.matchMedia('(prefers-color-scheme: dark)').matches;
+	import { preferences } from '$lib/stores';
 </script>
 
 <svelte:head>
@@ -10,6 +10,6 @@
 	<meta name="description" content="PixelDrain pwa" />
 </svelte:head>
 
-<div class:dark={darkMode} class="bg-background text-foreground block h-screen">
+<div class="bg-background text-foreground block h-screen {$preferences.theme}">
 	<slot />
 </div>
