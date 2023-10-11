@@ -14,7 +14,7 @@
 		</a>
 		<div class="flex items-center justify-center">
 			<button
-				class="inline-flex items-center justify-center w-12 h-12 bg-primary rounded-full focus:outline-none"
+				class="inline-flex items-center justify-center w-12 h-12 bg-primary text-primary-foreground rounded-full focus:outline-none"
 			>
 				<Plus class="w-4 h-4" />
 			</button>
