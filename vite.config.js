@@ -6,11 +6,7 @@ export default defineConfig({
 	plugins: [sveltekit()],
 	server: {
 		proxy: {
-			"^/api/.*": "https://pixeldrain.com",
-		},
-		https: {
-			key: fs.readFileSync(`${__dirname}/cert/key.pem`),
-			cert: fs.readFileSync(`${__dirname}/cert/cert.pem`)
+			'^/api/.*': 'https://pixeldrain.com'
 		}
 	}
 });
