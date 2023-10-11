@@ -1,10 +1,12 @@
 <script>
 	import { twMerge } from 'tailwind-merge';
-	let className = '';
-
-	export { className as class };
 	export let variant = 'unordered';
 	export let styled = 'unstyled';
+	export let classes = {};
+
+	$: classNames = Object.keys(classes)
+		.map((key) => (classes[key] ? key : ''))
+		.join(' ');
 
 	const variants = {
 		unordered: '',
@@ -20,7 +22,7 @@
 		'max-w-md space-y-2 list-inside',
 		styles[styled],
 		variants[variant],
-		className
+		classNames
 	);
 </script>
 

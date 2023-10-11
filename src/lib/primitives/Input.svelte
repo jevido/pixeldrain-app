@@ -1,13 +1,15 @@
 <script>
 	import { twMerge } from 'tailwind-merge';
-	let className = '';
-
-	export { className as class };
 	export let value;
 	export let disabled = false;
 	export let size = 'default';
 	export let state = 'default';
-    export let placeholder = '';
+	export let placeholder = '';
+	export let classes = {};
+
+	$: classNames = Object.keys(classes)
+		.map((key) => (classes[key] ? key : ''))
+		.join(' ');
 
 	const sizes = {
 		default: 'h-9',
@@ -27,8 +29,8 @@
 		'flex rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50',
 		sizes[size],
 		states[state],
-		className
+		classNames
 	);
 </script>
 
-<input {disabled} bind:value={value} {placeholder} class={mergedClasses} on:input />
+<input {disabled} bind:value {placeholder} class={mergedClasses} on:input />

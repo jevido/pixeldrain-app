@@ -1,11 +1,12 @@
 <script>
 	import { twMerge } from 'tailwind-merge';
-	let className = '';
 	export let type = 'button';
 	export let variant = 'default';
 	export let size = 'default';
 	export let disabled = false;
-	export { className as class };
+	export let classes = {};
+
+	$: classNames = Object.keys(classes).map(key => classes[key] ? key : '').join(' ');
 
 	const variants = {
 		default: 'bg-primary text-primary-foreground shadow hover-bg-primary/90',
@@ -29,7 +30,7 @@
 		'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
 		variants[variant],
 		sizes[size],
-		className
+		classNames
 	);
 </script>
 
