@@ -11,11 +11,10 @@
 		const data = [await api.get('user'), await api.get('user/files')];
 		return data;
 	}
-
 </script>
 
 {#await load()}
-	<div class="flex h-full items-center justify-center">
+	<div class="flex fixed w-full h-full items-center justify-center">
 		<Spinner class="w-12 h-12" />
 	</div>
 {:then [user, files]}

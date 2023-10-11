@@ -13,7 +13,8 @@
 	}
 </script>
 
-<div class="fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 border bottom-0 left-1/2 bg-secondary">
+<div class="flex flex-col w-full h-16 max-w-lg border bg-secondary">
+	<!-- <div class="fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 border bottom-0 left-1/2 bg-secondary"> -->
 	<div class="grid h-full max-w-lg grid-cols-5">
 		<a href="/dashboard" class="inline-flex flex-col items-center justify-center px-5">
 			<Home class={$page.url.pathname !== '/dashboard' ? 'text-muted-foreground' : ''} />
@@ -31,6 +32,7 @@
 					type="file"
 					id="file-uploader"
 					hidden
+					multiple
 					on:change|preventDefault|stopPropagation={uploadFiles}
 				/>
 			</label>

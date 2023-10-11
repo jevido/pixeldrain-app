@@ -10,6 +10,6 @@
 	<meta name="description" content="PixelDrain pwa" />
 </svelte:head>
 
-<div class="bg-background text-foreground block h-screen {$preferences.theme}">
+<div class="bg-background text-foreground block {$preferences.theme}">
 	<slot />
 </div>
