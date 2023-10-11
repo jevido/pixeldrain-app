@@ -6,7 +6,9 @@
 	export let disabled = false;
 	export let classes = {};
 
-	$: classNames = Object.keys(classes).map(key => classes[key] ? key : '').join(' ');
+	$: classNames = Object.keys(classes)
+		.map((key) => (classes[key] ? key : ''))
+		.join(' ');
 
 	const variants = {
 		default: 'bg-primary text-primary-foreground shadow hover-bg-primary/90',
