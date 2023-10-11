@@ -3,7 +3,7 @@
 	import { Button } from '$lib/primitives';
 	import { AlertCircle, X } from '$lib/icons';
 	import { formatBytes } from '$lib/util';
-	import { Modal } from '$lib/components/modal';
+	import { Block, Modal } from '$lib/components';
 
 	export let user = {};
 	export let files = {};
@@ -41,41 +41,37 @@
 	</div>
 </Modal>
 
-<div class="relative w-full shadow">
-	<div class="p-4 rounded-lg border border-border bg-secondary">
-		<h5 class="text-2xl font-extrabold text-center  pointer-events-none select-none">Statistics</h5>
-		<dl
-			class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto sm:grid-cols-3 xl:grid-cols-6 sm:p-8"
-		>
-			<div class="flex flex-col items-center justify-center">
-				<dt class="mb-2 text-2xl font-extrabold text-center">{spaceUsed}</dt>
-				<dd class="text-muted-foreground">Space used</dd>
-			</div>
-			<div class="flex flex-col items-center justify-center">
-				<dt class="mb-2 text-2xl font-extrabold text-center">{spaceRemaining}</dt>
-				<dd class="text-muted-foreground">remaining</dd>
-			</div>
-			<div class="flex flex-col items-center justify-center">
-				<dt class="mb-2 text-2xl font-extrabold text-center">{bandwidthUsed}</dt>
-				<dd class="text-muted-foreground">Bandwidth</dd>
-			</div>
-			<div class="flex flex-col items-center justify-center">
-				<dt class="mb-2 text-2xl font-extrabold text-center">{bandwidthRemaining}</dt>
-				<dd class="text-muted-foreground">remaining</dd>
-			</div>
-			<div class="flex flex-col items-center justify-center">
-				<dt class="mb-2 text-2xl font-extrabold text-center">{files.files.length}</dt>
-				<dd class="text-muted-foreground">Files</dd>
-			</div>
-			<div class="flex flex-col items-center justify-center">
-				<dt class="mb-2 text-2xl font-extrabold text-center">{fileSizeLimit}</dt>
-				<dd class="text-muted-foreground">file size limit</dd>
-			</div>
-		</dl>
-		<div class="w-full justify-center flex">
-			<Button variant="destructive" size="large" on:click={() => (modalShown = true)}>
-				logout
-			</Button>
+<Block>
+	<h5 class="text-2xl font-extrabold text-center pointer-events-none select-none">Statistics</h5>
+	<dl
+		class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto sm:grid-cols-3 xl:grid-cols-6 sm:p-8"
+	>
+		<div class="flex flex-col items-center justify-center">
+			<dt class="mb-2 text-2xl font-extrabold text-center">{spaceUsed}</dt>
+			<dd class="text-muted-foreground">Space used</dd>
 		</div>
+		<div class="flex flex-col items-center justify-center">
+			<dt class="mb-2 text-2xl font-extrabold text-center">{spaceRemaining}</dt>
+			<dd class="text-muted-foreground">remaining</dd>
+		</div>
+		<div class="flex flex-col items-center justify-center">
+			<dt class="mb-2 text-2xl font-extrabold text-center">{bandwidthUsed}</dt>
+			<dd class="text-muted-foreground">Bandwidth</dd>
+		</div>
+		<div class="flex flex-col items-center justify-center">
+			<dt class="mb-2 text-2xl font-extrabold text-center">{bandwidthRemaining}</dt>
+			<dd class="text-muted-foreground">remaining</dd>
+		</div>
+		<div class="flex flex-col items-center justify-center">
+			<dt class="mb-2 text-2xl font-extrabold text-center">{files.files.length}</dt>
+			<dd class="text-muted-foreground">Files</dd>
+		</div>
+		<div class="flex flex-col items-center justify-center">
+			<dt class="mb-2 text-2xl font-extrabold text-center">{fileSizeLimit}</dt>
+			<dd class="text-muted-foreground">file size limit</dd>
+		</div>
+	</dl>
+	<div class="w-full justify-center flex">
+		<Button variant="destructive" size="large" on:click={() => (modalShown = true)}>logout</Button>
 	</div>
-</div>
+</Block>
