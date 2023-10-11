@@ -1,11 +1,10 @@
 <script>
+	import { Block } from '$lib/components';
 	import { files } from '$lib/api/pixeldrain';
 </script>
 
 {#if $files.length > 0}
-	<div
-		class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700"
-	>
+	<Block>
 		<h5 class="text-2xl font-extrabold text-center">Recently uploaded</h5>
 		<div class="flow-root">
 			<ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700 overflow-y-auto">
@@ -20,9 +19,11 @@
 							{#if file.progress}
 								<div class="inline-flex items-center text-base font-semibold">
 									{#if file.id}
-									<a href="/file/{file.id}">View</a>
+										<a href="/file/{file.id}">View</a>
+									{:else if file.progress < 100}
+										{file.progress}%
 									{:else}
-									{file.progress}%
+										finishing
 									{/if}
 								</div>
 							{/if}
@@ -31,5 +32,5 @@
 				{/each}
 			</ul>
 		</div>
-	</div>
+	</Block>
 {/if}

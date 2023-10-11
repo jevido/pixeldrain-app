@@ -1,7 +1,16 @@
 <script>
 	import { page } from '$app/stores';
+	import { files } from '$lib/stores';
 
 	import { Home, Settings, Library, Plus, Wallet } from '$lib/icons';
+
+	function uploadFiles(event) {
+		if (event.target.files) {
+			for (const file of Array.from(event.target.files)) {
+				files.upload(file);
+			}
+		}
+	}
 </script>
 
 <div class="fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 border bottom-0 left-1/2 bg-secondary">
@@ -13,11 +22,18 @@
 			<Wallet class={$page.url.pathname !== '/subscriptions' ? 'text-muted-foreground' : ''} />
 		</a>
 		<div class="flex items-center justify-center">
-			<button
-				class="inline-flex items-center justify-center w-12 h-12 bg-primary text-primary-foreground rounded-full focus:outline-none"
+			<label
+				class="inline-flex hover:cursor-pointer items-center justify-center w-12 h-12 bg-primary text-primary-foreground rounded-full focus:outline-none"
+				for="file-uploader"
 			>
 				<Plus class="w-4 h-4" />
-			</button>
+				<input
+					type="file"
+					id="file-uploader"
+					hidden
+					on:change|preventDefault|stopPropagation={uploadFiles}
+				/>
+			</label>
 		</div>
 		<a href="/settings" class="inline-flex flex-col items-center justify-center">
 			<Settings class={$page.url.pathname !== '/settings' ? 'text-muted-foreground' : ''} />
