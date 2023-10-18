@@ -27,13 +27,17 @@
 	<div class="overflow-hidden overflow-y-auto">
 		<div class="flex justify-center mx-12">
 			<List>
-				{#each filteredFiles as file}
-					<ListItem>
-						<a href="/file/{file.id}" class="w-full">
-							{file.name}
-						</a>
-					</ListItem>
-				{/each}
+				{#if filteredFiles.length > 0}
+					{#each filteredFiles as file}
+						<ListItem>
+							<a href="/file/{file.id}" class="w-full">
+								{file.name}
+							</a>
+						</ListItem>
+					{/each}
+				{:else}
+					<ListItem>No files found</ListItem>
+				{/if}
 			</List>
 		</div>
 	</div>
