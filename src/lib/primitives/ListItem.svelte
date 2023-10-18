@@ -7,7 +7,7 @@
 		.map((key) => (classes[key] ? key : ''))
 		.join(' ');
 
-	$: mergedClasses = twMerge('', classNames);
+	$: mergedClasses = twMerge('w-full truncate overflow-hidden', classNames);
 </script>
 
 <li class={mergedClasses}>
