@@ -11,12 +11,10 @@
 </script>
 
 {#if auth_key}
-	<div class="flex flex-col min-h-screen">
-		<div class="flex-grow">
-			<slot />
-		</div>
-		<div class="sticky bottom-0">
-			<BottomNavigation />
-		</div>
+	<div class="flex flex-col h-screen pb-16 overflow-y-auto">
+		<slot />
+	</div>
+	<div class="fixed w-full bottom-0">
+		<BottomNavigation />
 	</div>
 {/if}

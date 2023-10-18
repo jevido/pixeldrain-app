@@ -15,7 +15,7 @@
 	$: filteredFiles = files.filter((file) => file.name.toLowerCase().includes(searchFor));
 </script>
 
-<div class="fixed left-0 top-0 w-full p-4 bg-secondary">
+<div class="w-full p-4 bg-secondary">
 	<Input size="full" bind:value={searchInputValue} placeholder="Search files.." />
 </div>
 
@@ -24,16 +24,18 @@
 		<Spinner class="w-12 h-12" />
 	</div>
 {:then}
-	<div class="flex justify-center mt-16">
-		<List>
-			{#each filteredFiles as file}
-				<ListItem>
-					<a href="/file/{file.id}" class="w-full">
-						{file.name}
-					</a>
-				</ListItem>
-			{/each}
-		</List>
+	<div class="overflow-hidden overflow-y-auto">
+		<div class="flex justify-center">
+			<List>
+				{#each filteredFiles as file}
+					<ListItem>
+						<a href="/file/{file.id}" class="w-full">
+							{file.name}
+						</a>
+					</ListItem>
+				{/each}
+			</List>
+		</div>
 	</div>
 {/await}
 
