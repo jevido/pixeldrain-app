@@ -8,7 +8,7 @@
 
 	async function load() {
 		const data = await api.get('user/files');
-		files = [...data.files];
+		files = data.files;
 	}
 
 	$: searchFor = searchInputValue.toLowerCase();
@@ -25,7 +25,7 @@
 	</div>
 {:then}
 	<div class="overflow-hidden overflow-y-auto">
-		<div class="flex justify-center">
+		<div class="flex justify-center mx-12">
 			<List>
 				{#each filteredFiles as file}
 					<ListItem>

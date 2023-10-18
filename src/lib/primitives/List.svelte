@@ -19,7 +19,7 @@
 	};
 
 	$: mergedClasses = twMerge(
-		'max-w-md space-y-2 list-inside',
+		'max-w-md space-y-2 list-inside w-full',
 		styles[styled],
 		variants[variant],
 		classNames

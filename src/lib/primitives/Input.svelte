@@ -15,7 +15,7 @@
 		default: 'h-9',
 		small: 'h-8',
 		large: 'h-10',
-		full: 'w-full'
+		full: 'w-full h-10'
 	};
 
 	const states = {
