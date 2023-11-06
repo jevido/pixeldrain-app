@@ -2,6 +2,17 @@
 	import '../app.postcss';
 
 	import { preferences } from '$lib/stores';
+
+	let oldTheme = 'theme';
+
+	function setTheme(oldtheme, newTheme) {
+		document.body.classList.remove(oldtheme);
+		document.body.classList.add(newTheme);
+
+		oldTheme = newTheme;
+	}
+
+	$: setTheme(oldTheme, $preferences.theme);
 </script>
 
 <svelte:head>
@@ -10,6 +21,6 @@
 	<meta name="description" content="PixelDrain pwa" />
 </svelte:head>
 
-<div class="bg-background text-foreground block min-h-screen {$preferences.theme}">
+<div class="bg-background text-foreground block min-h-screen">
 	<slot />
 </div>

@@ -25,8 +25,14 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"bits-ui": "^0.9.1",
+		"clsx": "^2.0.0",
+		"cmdk-sv": "^0.0.5",
 		"fs": "^0.0.1-security",
+		"lucide-svelte": "^0.292.0",
+		"radix-icons-svelte": "^1.2.1",
 		"tailwind-merge": "^1.14.0",
+		"tailwind-variants": "^0.1.18",
 		"tailwindcss-animate": "^1.0.7"
 	}
 }
