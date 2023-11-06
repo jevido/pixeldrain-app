@@ -42,4 +42,12 @@ function formatDate(dateString) {
 	return new Date(dateString).toLocaleString();
 }
 
-export { greeting, formatBytes, formatDate };
+const debounce = (function () {
+	let timer = 0;
+	return function (callback, ms) {
+		clearTimeout(timer);
+		timer = setTimeout(callback, ms);
+	};
+})();
+
+export { debounce, greeting, formatBytes, formatDate };
