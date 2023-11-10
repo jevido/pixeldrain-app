@@ -33,11 +33,24 @@
 	</div>
 {:then}
 	<VirtualList items={filteredFiles} let:item>
-		<div class="">
-			<a href="/file/{item.id}">
-				{item.name}
-			</a>
-		</div>
+		<a href="/file/{item.id}" class="flex px-4 py-2 w-space-x-4">
+			<div class="flex-shrink-0">
+				<img
+					class="w-8 h-8 rounded-full"
+					src="https://pixeldrain.com/api/file/{item.id}/thumbnail?width=32&height=32"
+					alt={item.name}
+				/>
+			</div>
+			<div class="flex-1 ml-2 min-w-0">
+				<p class="text-sm font-medium truncate">
+					{item.name}
+				</p>
+				<p class="text-sm truncate text-muted-foreground">
+					size: {item.size}
+					upload date: {item.date}
+				</p>
+			</div>
+		</a>
 	</VirtualList>
 {/await}
 
