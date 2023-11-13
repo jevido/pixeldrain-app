@@ -23,7 +23,7 @@
 		</a>
 		<div class="flex items-center justify-center">
 			<label
-				class="inline-flex hover:cursor-pointer items-center justify-center w-12 h-12 bg-primary text-primary-foreground rounded-full focus:outline-none"
+				class="inline-flex hover:cursor-pointer items-center justify-center w-12 h-12 bg-pixeldrain text-pixeldrain-foreground rounded-full focus:outline-none"
 				for="file-uploader"
 			>
 				<Plus class="w-4 h-4" />

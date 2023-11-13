@@ -47,7 +47,11 @@ const config = {
 				card: {
 					DEFAULT: "hsl(var(--card) / <alpha-value>)",
 					foreground: "hsl(var(--card-foreground) / <alpha-value>)"
-				}
+				},
+				pixeldrain: {
+					DEFAULT: "hsl(var(--pixeldrain) / <alpha-value>)",
+					foreground: "hsl(var(--pixeldrain-foreground) / <alpha-value>)"
+				},
 			},
 			borderRadius: {
 				lg: "var(--radius)",
