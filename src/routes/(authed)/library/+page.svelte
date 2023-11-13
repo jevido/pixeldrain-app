@@ -42,11 +42,11 @@
 
 <div class="w-full px-4 pt-4 bg-secondary">
 	<Input bind:value={searchInputValue} placeholder="Search files.." />
-	<div class="flex flex-row sm:justify-center gap-8 p-2 w-full overflow-x-auto">
+	<div class="flex flex-row sm:justify-center gap-4 sm:gap-8 p-3 w-full overflow-x-auto">
 		{#each filters as filter}
 			<Button
 				variant="ghost"
-				class="{filter.isActive ? 'bg-accent/90' : ''} "
+				class="{filter.isActive ? 'bg-accent/90' : ''}"
 				on:click={() => {
 					filter.isActive = !filter.isActive;
 				}}
