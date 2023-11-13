@@ -1,8 +1,10 @@
 <script>
-	import { Input } from '$lib/primitives';
+	import { Input } from '$lib/components/ui/input';
+	import { Button } from '$lib/components/ui/button';
+	import { Separator } from '$lib/components/ui/separator';
 	import { Spinner } from '$lib/components';
 	import { api } from '$lib/api/pixeldrain';
-	import { formatDate, formatBytes } from '$lib/util';
+	import { formatDate, formatBytes, mimetypes } from '$lib/util';
 	import VirtualList from '$lib/components/VirtualList.svelte';
 
 	let files = [];
@@ -15,16 +17,45 @@
 			id: item.id,
 			name: item.name.toLowerCase(),
 			size: formatBytes(item.size),
-			date: formatDate(item.date_upload)
+			date: formatDate(item.date_upload),
+			mime_type: item.mime_type
 		}));
 	}
 
+	const filters = Object.values(mimetypes).map((item) => ({
+		...item,
+		isActive: false
+	}));
+
+	$: activeFilters = filters.filter((item) => item.isActive);
+	$: activeMimeTypes = activeFilters.flatMap((item) => item.extensions);
+
+	$: filteredByActiveFilters = files.filter((item) => {
+		if (activeMimeTypes.length === 0) {
+			return true;
+		}
+
+		let extension = item.mime_type.split('/')[1];
+		return activeMimeTypes.includes(extension);
+	});
 	$: searchFor = searchInputValue.toLowerCase();
-	$: filteredFiles = files.filter((file) => file.name.includes(searchFor));
+	$: filteredFiles = filteredByActiveFilters.filter((file) => file.name.includes(searchFor));
 </script>
 
-<div class="w-full p-4 bg-secondary">
-	<Input size="full" bind:value={searchInputValue} placeholder="Search files.." />
+<div class="w-full px-4 pt-2 bg-secondary">
+	<Input bind:value={searchInputValue} autofocus placeholder="Search files.." />
+	<div class="flex flex-row justify-center gap-8 p-2">
+		{#each filters as filter}
+			<Button
+				variant={filter.isActive ? 'secondary' : 'ghost'}
+				on:click={() => {
+					filter.isActive = !filter.isActive;
+				}}
+			>
+				{filter.name}
+			</Button>
+		{/each}
+	</div>
 </div>
 
 {#await load()}
@@ -34,20 +65,17 @@
 {:then}
 	<VirtualList items={filteredFiles} let:item>
 		<a href="/file/{item.id}" class="flex px-4 py-2 w-space-x-4">
-			<div class="flex-shrink-0">
-				<img
-					class="w-8 h-8 rounded-full"
-					src="https://pixeldrain.com/api/file/{item.id}/thumbnail?width=32&height=32"
-					alt={item.name}
-				/>
-			</div>
-			<div class="flex-1 ml-2 min-w-0">
+			<img
+				class="w-8 h-8 rounded-full"
+				src="https://pixeldrain.com/api/file/{item.id}/thumbnail?width=32&height=32"
+				alt={item.name}
+			/>
+			<div class="ml-2 min-w-0">
 				<p class="text-sm font-medium truncate">
 					{item.name}
 				</p>
 				<p class="text-sm truncate text-muted-foreground">
-					size: {item.size}
-					upload date: {item.date}
+					uploaded at: {item.date}
 				</p>
 			</div>
 		</a>
@@ -57,3 +85,9 @@
 <svelte:head>
 	<title>Library ~ Pixeldrain</title>
 </svelte:head>
+
+<style>
+	.active-filter {
+		@apply border-b-2 border-accent;
+	}
+</style>
