@@ -42,7 +42,7 @@
 
 <div class="w-full px-4 pt-4 bg-secondary">
 	<Input bind:value={searchInputValue} autofocus placeholder="Search files.." />
-	<div class="flex flex-row justify-center gap-8 p-2">
+	<div class="flex flex-row justify-center gap-8 p-2 overflow-x-auto">
 		{#each filters as filter}
 			<Button
 				variant="ghost"
