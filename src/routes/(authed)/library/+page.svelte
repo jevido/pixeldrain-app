@@ -1,7 +1,6 @@
 <script>
 	import { Input } from '$lib/components/ui/input';
 	import { Button } from '$lib/components/ui/button';
-	import { Separator } from '$lib/components/ui/separator';
 	import { Spinner } from '$lib/components';
 	import { api } from '$lib/api/pixeldrain';
 	import { formatDate, formatBytes, mimetypes } from '$lib/util';
@@ -27,27 +26,27 @@
 		isActive: false
 	}));
 
+	$: searchFor = searchInputValue.toLowerCase();
 	$: activeFilters = filters.filter((item) => item.isActive);
 	$: activeMimeTypes = activeFilters.flatMap((item) => item.extensions);
 
-	$: filteredByActiveFilters = files.filter((item) => {
-		if (activeMimeTypes.length === 0) {
-			return true;
-		}
-
-		let extension = item.mime_type.split('/')[1];
-		return activeMimeTypes.includes(extension);
-	});
-	$: searchFor = searchInputValue.toLowerCase();
+	$: filteredByActiveFilters =
+		activeMimeTypes.length === 0
+			? files
+			: files.filter((item) => {
+					let extension = item.mime_type.split('/')[1];
+					return activeMimeTypes.includes(extension);
+			  });
 	$: filteredFiles = filteredByActiveFilters.filter((file) => file.name.includes(searchFor));
 </script>
 
-<div class="w-full px-4 pt-2 bg-secondary">
+<div class="w-full px-4 pt-4 bg-secondary">
 	<Input bind:value={searchInputValue} autofocus placeholder="Search files.." />
 	<div class="flex flex-row justify-center gap-8 p-2">
 		{#each filters as filter}
 			<Button
-				variant={filter.isActive ? 'secondary' : 'ghost'}
+				variant="ghost"
+				class={filter.isActive ? 'bg-accent/90' : ''}
 				on:click={() => {
 					filter.isActive = !filter.isActive;
 				}}
@@ -85,9 +84,3 @@
 <svelte:head>
 	<title>Library ~ Pixeldrain</title>
 </svelte:head>
-
-<style>
-	.active-filter {
-		@apply border-b-2 border-accent;
-	}
-</style>
