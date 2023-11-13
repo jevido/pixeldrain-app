@@ -1,6 +1,7 @@
 <script>
 	import { Block } from '$lib/components';
 	import { files } from '$lib/api/pixeldrain';
+	import { Progress } from '$lib/components/ui/progress';
 </script>
 
 {#if $files.length > 0}
@@ -17,11 +18,12 @@
 								</p>
 							</div>
 							{#if file.progress}
-								<div class="inline-flex items-center text-base font-semibold">
+								<div class="flex flex-col items-center text-base font-semibold">
 									{#if file.id}
 										<a href="/file/{file.id}">View</a>
 									{:else if file.progress < 100}
 										{file.progress}%
+										<Progress value={file.progress} max={100} class="w-full" />
 									{:else}
 										finishing
 									{/if}
