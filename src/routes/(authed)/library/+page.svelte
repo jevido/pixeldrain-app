@@ -46,7 +46,7 @@
 		{#each filters as filter}
 			<Button
 				variant="ghost"
-				class={filter.isActive ? 'bg-accent/90' : ''}
+				class="{filter.isActive ? 'bg-accent/90' : ''} "
 				on:click={() => {
 					filter.isActive = !filter.isActive;
 				}}
