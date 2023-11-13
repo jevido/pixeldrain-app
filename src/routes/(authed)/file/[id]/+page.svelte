@@ -11,8 +11,6 @@
 	}
 </script>
 
-File viewer for: {$page.params.id}
-
 {#await load()}
 	<div class="flex fixed w-full h-full items-center justify-center">
 		<Spinner class="w-12 h-12" />
