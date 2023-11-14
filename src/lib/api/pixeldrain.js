@@ -84,10 +84,6 @@ const Files = () => {
 		// Todo: clean this up
 		upload: function (file) {
 			let index = files.length;
-			let formdata = new FormData();
-			formdata.append('name', file.name);
-			formdata.append('file', file);
-
 			// Push the uploaded file in the tracked list. And update svelte
 			update((files) => {
 				files.push({
@@ -129,7 +125,7 @@ const Files = () => {
 					}
 				}
 			};
-			xhr.send(formdata);
+			xhr.send(file);
 		}
 	};
 
