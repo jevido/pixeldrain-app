@@ -11,7 +11,6 @@ function storable(data) {
 	return {
 		subscribe,
 		set: (n) => {
-			console.debug(localStorage);
 			isBrowser && (localStorage.storable = JSON.stringify(n));
 			set(n);
 		},
