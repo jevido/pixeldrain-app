@@ -96,7 +96,6 @@ const Files = () => {
 			let xhr = new XMLHttpRequest();
 			xhr.open('PUT', api.endpoint + 'file/' + encodeURIComponent(file.name));
 			xhr.withCredentials = true;
-			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
 			// Todo: think about 6 hours for a mobile connection...
 			xhr.timeout = 21600000; // 6 hours, to account for slow connections

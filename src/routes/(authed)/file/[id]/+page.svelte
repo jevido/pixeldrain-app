@@ -66,14 +66,17 @@
 		<Spinner class="w-12 h-12" />
 	</div>
 {:then file}
-	<Card.Root>
+	<Card.Root class="mx-8 mt-8">
 		<Card.Header>
 			<Card.Title>{file.name}</Card.Title>
 			<Card.Description>
 				<p>Uploaded at: {formatDate(file.date_upload)}</p>
 			</Card.Description>
 		</Card.Header>
-		<Card.Content class="grid gap-4">
+		<Card.Content>
+			<div class="flex justify-center mb-4">
+				<img src="/api/{file.thumbnail_href}"/>
+			</div>
 			<div class="grid grid-cols-2 gap-4 rounded-md border p-4">
 				<Button variant="outline" on:click={openRenameModal}>Rename</Button>
 				<a
@@ -84,7 +87,7 @@
 					Download
 				</a>
 				<Button variant="outline" on:click={share}>Share</Button>
-				<Button variant="outline" on:click={deleteFile}>delete</Button>
+				<Button variant="outline" on:click={deleteFile}>Delete</Button>
 			</div>
 		</Card.Content>
 	</Card.Root>
