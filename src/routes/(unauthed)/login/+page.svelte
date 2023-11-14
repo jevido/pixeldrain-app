@@ -4,7 +4,7 @@
 	import { Mail, Lock } from '$lib/icons';
 
 	import { Spinner } from '$lib/components';
-	import { Button } from '$lib/primitives';
+	import { Button } from '$lib/components/ui/button';
 	import { authenticate, logout } from '$lib/api/pixeldrain';
 	import { getCookie } from '$lib/util';
 
@@ -97,8 +97,6 @@
 
 						<div class="mt-6">
 							<Button
-								variant="submit"
-								size="large"
 								type="submit"
 								class="w-full rounded-lg"
 								disabled={waiting}
