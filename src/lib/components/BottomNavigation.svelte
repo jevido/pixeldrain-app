@@ -36,7 +36,7 @@
 				/>
 			</label>
 		</div>
-		<a href="/settings" class="inline-flex flex-col items-center justify-center">
+		<a href="/profile" class="inline-flex flex-col items-center justify-center">
 			<Settings class={$page.url.pathname !== '/settings' ? 'text-muted-foreground' : ''} />
 		</a>
 		<a href="/library" class="inline-flex flex-col items-center justify-center">
