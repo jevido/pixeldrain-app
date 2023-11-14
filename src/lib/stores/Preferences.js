@@ -25,5 +25,6 @@ function storable(data) {
 const darkMode = window?.matchMedia && window?.matchMedia('(prefers-color-scheme: dark)').matches;
 
 export const preferences = storable({
-	theme: darkMode ? 'dark' : ''
+	theme: darkMode ? 'dark' : '',
+	dataSaving: false
 });

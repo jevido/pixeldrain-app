@@ -5,6 +5,7 @@
 	import { api } from '$lib/api/pixeldrain';
 	import { formatDate, formatBytes, mimetypes } from '$lib/util';
 	import VirtualList from '$lib/components/VirtualList.svelte';
+	import { preferences } from '$lib/stores';
 
 	let files = [];
 	let searchInputValue = '';
