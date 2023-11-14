@@ -50,7 +50,7 @@
 	}
 </script>
 
-<Card.Root class="mx-auto mb-auto mt-4 max-w-full">
+<Card.Root class="max-w-full">
 	<Card.Header>
 		<Card.Title>Appearance</Card.Title>
 		<Card.Description>These settings are for this device only</Card.Description>
