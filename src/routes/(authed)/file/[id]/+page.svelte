@@ -75,7 +75,7 @@
 		</Card.Header>
 		<Card.Content>
 			<div class="flex justify-center mb-4">
-				<img src="/api/{file.thumbnail_href}"/>
+				<img src="/api/{file.thumbnail_href}" />
 			</div>
 			<div class="grid grid-cols-2 gap-4 rounded-md border p-4">
 				<Button variant="outline" on:click={openRenameModal}>Rename</Button>
