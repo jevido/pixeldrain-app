@@ -63,7 +63,7 @@
 		<div class="flex items-center space-x-4 rounded-md border p-4">
 			<div class="flex-1 space-y-1">
 				<p class=" justify-between flex items-center text-sm font-medium leading-none">
-					Appearance
+					Theme
 					<Popover.Root bind:open let:ids>
 						<Popover.Trigger asChild let:builder>
 							<Button
