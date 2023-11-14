@@ -46,7 +46,7 @@
 		{#each filters as filter}
 			<Button
 				variant="ghost"
-				class="{filter.isActive ? 'bg-accent/90' : ''}"
+				class={filter.isActive ? 'bg-accent/90' : ''}
 				on:click={() => {
 					filter.isActive = !filter.isActive;
 				}}
@@ -62,23 +62,35 @@
 		<Spinner class="w-12 h-12" />
 	</div>
 {:then}
-	<VirtualList items={filteredFiles} let:item>
-		<a href="/file/{item.id}" class="flex px-4 py-2 w-space-x-4">
-			<img
-				class="w-8 h-8 rounded-full"
-				src="https://pixeldrain.com/api/file/{item.id}/thumbnail?width=32&height=32"
-				alt={item.name}
-			/>
-			<div class="ml-2 min-w-0">
-				<p class="text-sm font-medium truncate">
-					{item.name}
-				</p>
-				<p class="text-sm truncate text-muted-foreground">
-					uploaded at: {item.date}
-				</p>
-			</div>
-		</a>
-	</VirtualList>
+	{#if filteredFiles.length > 0}
+		<VirtualList items={filteredFiles} let:item>
+			<a href="/file/{item.id}" class="flex px-4 py-2">
+				<img
+					class="w-8 h-8 rounded-full"
+					src="https://pixeldrain.com/api/file/{item.id}/thumbnail?width=32&height=32"
+					alt={item.name}
+				/>
+				<div class="ml-2 min-w-0">
+					<p class="text-sm font-medium truncate">
+						{item.name}
+					</p>
+					<p class="text-sm truncate text-muted-foreground">
+						uploaded at: {item.date}
+					</p>
+				</div>
+			</a>
+		</VirtualList>
+	{:else}
+		<div class="flex px-4 py-2 justify-center">
+			{#if filteredFiles.length === 0 && files.length > 0}
+				All {files.length} files are filtered out
+			{:else}
+				You haven't uploaded any files yet
+				{filteredFiles.length}
+				{files.length}
+			{/if}
+		</div>
+	{/if}
 {/await}
 
 <svelte:head>
