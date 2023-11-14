@@ -46,11 +46,7 @@
 	}
 
 	function resetToDefaults() {
-		$preferences.theme =
-			window?.matchMedia && window?.matchMedia('(prefers-color-scheme: dark)').matches
-				? 'dark'
-				: '';
-		$preferences.dataSaving = false;
+		preferences.reset()
 	}
 </script>
 

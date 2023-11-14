@@ -2,6 +2,7 @@ import { writable } from 'svelte/store';
 
 function storable(data) {
 	const store = writable(data);
+	const _defaults = data;
 	const { subscribe, set, update } = store;
 	const isBrowser = typeof window !== 'undefined';
 
@@ -10,6 +11,7 @@ function storable(data) {
 	return {
 		subscribe,
 		set: (n) => {
+			console.debug(localStorage);
 			isBrowser && (localStorage.storable = JSON.stringify(n));
 			set(n);
 		},
@@ -18,6 +20,10 @@ function storable(data) {
 
 			isBrowser && (localStorage.storable = JSON.stringify(updatedStore));
 			set(updatedStore);
+		},
+		reset: () => {
+			isBrowser && (localStorage.storable = JSON.stringify(_defaults));
+			set(_defaults);
 		}
 	};
 }
