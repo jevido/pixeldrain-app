@@ -11,10 +11,10 @@
 </script>
 
 {#if auth_key}
-	<div class="flex flex-col h-screen pb-16 overflow-y-auto">
+	<div class="flex h-screen flex-col overflow-y-auto pb-16">
 		<slot />
 	</div>
-	<div class="fixed w-full bottom-0">
+	<div class="fixed bottom-0 w-full">
 		<BottomNavigation />
 	</div>
 {/if}

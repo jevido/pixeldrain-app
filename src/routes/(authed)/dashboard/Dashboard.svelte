@@ -3,9 +3,9 @@
 	export let user;
 </script>
 
-<p class="text-5xl font-extrabold text-center mt-4 pointer-events-none select-none">
+<p class="pointer-events-none mt-4 select-none text-center text-5xl font-extrabold">
 	{greeting()}
-	<span class="text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-purple-600"
+	<span class="bg-gradient-to-br from-pink-400 to-purple-600 bg-clip-text text-transparent"
 		>{user.username}</span
 	>
 </p>

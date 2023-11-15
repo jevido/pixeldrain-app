@@ -41,9 +41,9 @@
 	$: filteredFiles = filteredByActiveFilters.filter((file) => file.name.includes(searchFor));
 </script>
 
-<div class="w-full px-4 pt-4 bg-secondary">
+<div class="w-full bg-secondary px-4 pt-4">
 	<Input bind:value={searchInputValue} placeholder="Search files.." />
-	<div class="flex flex-row sm:justify-center gap-4 sm:gap-8 p-3 w-full overflow-x-auto">
+	<div class="flex w-full flex-row gap-4 overflow-x-auto p-3 sm:justify-center sm:gap-8">
 		{#each filters as filter}
 			<Button
 				variant="ghost"
@@ -59,8 +59,8 @@
 </div>
 
 {#await load()}
-	<div class="flex fixed w-full h-full items-center justify-center">
-		<Spinner class="w-12 h-12" />
+	<div class="fixed flex h-full w-full items-center justify-center">
+		<Spinner class="h-12 w-12" />
 	</div>
 {:then}
 	{#if filteredFiles.length > 0}
@@ -68,23 +68,23 @@
 			<a href="/file/{item.id}" class="flex px-4 py-2">
 				{#if !$preferences.dataSaving}
 					<img
-						class="w-8 h-8 rounded-full"
+						class="h-8 w-8 rounded-full"
 						src="https://pixeldrain.com/api/file/{item.id}/thumbnail?width=32&height=32"
 						alt={item.name}
 					/>
 				{/if}
 				<div class="ml-2 min-w-0">
-					<p class="text-sm font-medium truncate">
+					<p class="truncate text-sm font-medium">
 						{item.name}
 					</p>
-					<p class="text-sm truncate text-muted-foreground">
+					<p class="truncate text-sm text-muted-foreground">
 						uploaded at: {item.date}
 					</p>
 				</div>
 			</a>
 		</VirtualList>
 	{:else}
-		<div class="flex px-4 py-2 justify-center">
+		<div class="flex justify-center px-4 py-2">
 			{#if filteredFiles.length === 0 && files.length > 0}
 				All {files.length} files are filtered out
 			{:else}

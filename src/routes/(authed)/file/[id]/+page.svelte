@@ -62,8 +62,8 @@
 </script>
 
 {#await load()}
-	<div class="flex fixed w-full h-full items-center justify-center">
-		<Spinner class="w-12 h-12" />
+	<div class="fixed flex h-full w-full items-center justify-center">
+		<Spinner class="h-12 w-12" />
 	</div>
 {:then file}
 	<Card.Root class="mx-8 mt-8">
@@ -74,7 +74,7 @@
 			</Card.Description>
 		</Card.Header>
 		<Card.Content>
-			<div class="flex justify-center mb-4">
+			<div class="mb-4 flex justify-center">
 				<img src="/api/{file.thumbnail_href}" />
 			</div>
 			<div class="grid grid-cols-2 gap-4 rounded-md border p-4">

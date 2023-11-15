@@ -5,7 +5,7 @@
 <svg
 	aria-hidden="true"
 	class={twMerge(
-		'w-8 h-8 mr-2 text-gray-200 animate-spin text-secondary fill-foreground',
+		'mr-2 h-8 w-8 animate-spin fill-foreground text-gray-200 text-secondary',
 		$$props.class
 	)}
 	viewBox="0 0 100 101"

@@ -13,7 +13,7 @@
 	}
 </script>
 
-<div class="flex flex-col w-full h-16 items-center border bg-secondary">
+<div class="flex h-16 w-full flex-col items-center border bg-secondary">
 	<div class="grid h-full w-full grid-cols-5">
 		<a href="/dashboard" class="inline-flex flex-col items-center justify-center px-5">
 			<Home class={$page.url.pathname !== '/dashboard' ? 'text-muted-foreground' : ''} />
@@ -23,10 +23,10 @@
 		</a>
 		<div class="flex items-center justify-center">
 			<label
-				class="inline-flex hover:cursor-pointer items-center justify-center w-12 h-12 bg-pixeldrain text-pixeldrain-foreground rounded-full focus:outline-none"
+				class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-pixeldrain text-pixeldrain-foreground hover:cursor-pointer focus:outline-none"
 				for="file-uploader"
 			>
-				<Plus class="w-4 h-4" />
+				<Plus class="h-4 w-4" />
 				<input
 					type="file"
 					id="file-uploader"

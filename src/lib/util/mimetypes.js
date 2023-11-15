@@ -103,7 +103,7 @@ const mimetypes = {
 			'ts',
 			'vob',
 			'wlmp'
-		],
+		]
 	},
 	archives: {
 		name: 'archives',
@@ -193,7 +193,7 @@ const mimetypes = {
 			'z05',
 			'zab',
 			'zipx'
-		],
+		]
 	},
 	apps: {
 		name: 'apps',
@@ -219,7 +219,7 @@ const mimetypes = {
 			'shs',
 			'vbs',
 			'xap'
-		],
+		]
 	},
 	documents: {
 		name: 'documents',

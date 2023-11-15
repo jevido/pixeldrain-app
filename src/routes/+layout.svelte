@@ -21,6 +21,6 @@
 	<meta name="description" content="PixelDrain pwa" />
 </svelte:head>
 
-<div class="bg-background text-foreground block min-h-screen">
+<div class="block min-h-screen bg-background text-foreground">
 	<slot />
 </div>

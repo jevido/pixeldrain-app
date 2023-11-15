@@ -3,7 +3,7 @@
 </script>
 
 <svg
-	class={twMerge('w-5 h-5', $$props.class)}
+	class={twMerge('h-5 w-5', $$props.class)}
 	aria-hidden="true"
 	xmlns="http://www.w3.org/2000/svg"
 	fill="none"

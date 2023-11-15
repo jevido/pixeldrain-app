@@ -9,8 +9,8 @@
 </script>
 
 {#await load()}
-	<div class="flex fixed w-full h-full items-center justify-center">
-		<Spinner class="w-12 h-12" />
+	<div class="fixed flex h-full w-full items-center justify-center">
+		<Spinner class="h-12 w-12" />
 	</div>
 {:then user}
 	{user.username}

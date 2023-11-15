@@ -6,14 +6,14 @@
 
 {#if $files.length > 0}
 	<Block>
-		<h5 class="text-2xl font-extrabold text-center">Recently uploaded</h5>
+		<h5 class="text-center text-2xl font-extrabold">Recently uploaded</h5>
 		<div class="flow-root">
-			<ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700 overflow-y-auto">
+			<ul role="list" class="divide-y divide-gray-200 overflow-y-auto dark:divide-gray-700">
 				{#each $files as file}
 					<li class="py-3 sm:py-4">
 						<a href={file.id ? `/file/${file.id}` : undefined} class="flex items-center space-x-4">
-							<div class="flex-1 min-w-0">
-								<p class="text-sm font-medium truncate">
+							<div class="min-w-0 flex-1">
+								<p class="truncate text-sm font-medium">
 									{file.name}
 								</p>
 							</div>

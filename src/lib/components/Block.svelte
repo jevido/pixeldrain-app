@@ -8,7 +8,7 @@
 </script>
 
 <div class={twMerge('relative w-full shadow', classNames)}>
-	<div class="p-4 rounded-lg border border-border bg-secondary">
+	<div class="rounded-lg border border-border bg-secondary p-4">
 		<slot />
 	</div>
 </div>

@@ -24,15 +24,15 @@
 
 <Modal bind:modalShown>
 	<button
-		class="absolute top-3 right-2.5 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+		class="absolute right-2.5 top-3 ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm"
 		data-modal-hide="popup-modal"
 		on:click={() => (modalShown = false)}
 	>
-		<X class="w-5 h-5" />
+		<X class="h-5 w-5" />
 		<span class="sr-only">Close modal</span>
 	</button>
 	<div class="p-6 text-center">
-		<AlertCircle class="mx-auto mb-4 w-14 h-14" />
+		<AlertCircle class="mx-auto mb-4 h-14 w-14" />
 		<h3 class="mb-5 text-lg font-normal">Are you sure you want to logout</h3>
 		<Button variant="destructive" on:click={logout}>Confirm</Button>
 		<Button class="bg-gray-700 text-foreground" on:click={() => (modalShown = false)}>
@@ -42,36 +42,36 @@
 </Modal>
 
 <Block>
-	<h5 class="text-2xl font-extrabold text-center pointer-events-none select-none">Statistics</h5>
+	<h5 class="pointer-events-none select-none text-center text-2xl font-extrabold">Statistics</h5>
 	<dl
-		class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto sm:grid-cols-3 xl:grid-cols-6 sm:p-8"
+		class="mx-auto grid max-w-screen-xl grid-cols-2 gap-8 p-4 sm:grid-cols-3 sm:p-8 xl:grid-cols-6"
 	>
 		<div class="flex flex-col items-center justify-center">
-			<dt class="mb-2 text-2xl font-extrabold text-center">{spaceUsed}</dt>
+			<dt class="mb-2 text-center text-2xl font-extrabold">{spaceUsed}</dt>
 			<dd class="text-muted-foreground">Space used</dd>
 		</div>
 		<div class="flex flex-col items-center justify-center">
-			<dt class="mb-2 text-2xl font-extrabold text-center">{spaceRemaining}</dt>
+			<dt class="mb-2 text-center text-2xl font-extrabold">{spaceRemaining}</dt>
 			<dd class="text-muted-foreground">remaining</dd>
 		</div>
 		<div class="flex flex-col items-center justify-center">
-			<dt class="mb-2 text-2xl font-extrabold text-center">{bandwidthUsed}</dt>
+			<dt class="mb-2 text-center text-2xl font-extrabold">{bandwidthUsed}</dt>
 			<dd class="text-muted-foreground">Bandwidth</dd>
 		</div>
 		<div class="flex flex-col items-center justify-center">
-			<dt class="mb-2 text-2xl font-extrabold text-center">{bandwidthRemaining}</dt>
+			<dt class="mb-2 text-center text-2xl font-extrabold">{bandwidthRemaining}</dt>
 			<dd class="text-muted-foreground">remaining</dd>
 		</div>
 		<div class="flex flex-col items-center justify-center">
-			<dt class="mb-2 text-2xl font-extrabold text-center">{files.files.length}</dt>
+			<dt class="mb-2 text-center text-2xl font-extrabold">{files.files.length}</dt>
 			<dd class="text-muted-foreground">Files</dd>
 		</div>
 		<div class="flex flex-col items-center justify-center">
-			<dt class="mb-2 text-2xl font-extrabold text-center">{fileSizeLimit}</dt>
+			<dt class="mb-2 text-center text-2xl font-extrabold">{fileSizeLimit}</dt>
 			<dd class="text-muted-foreground">file size limit</dd>
 		</div>
 	</dl>
-	<div class="w-full justify-center flex">
+	<div class="flex w-full justify-center">
 		<Button variant="destructive" size="large" on:click={() => (modalShown = true)}>logout</Button>
 	</div>
 </Block>

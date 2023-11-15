@@ -8,12 +8,12 @@
 
 {#if modalShown}
 	<div
-		class="fixed top-0 left-0 h-screen w-screen bg-background/60 z-50 flex items-center rounded"
+		class="fixed left-0 top-0 z-50 flex h-screen w-screen items-center rounded bg-background/60"
 		tabindex="-1"
 		on:click={close}
 	>
-		<div class="relative w-full max-w-md max-h-full rounded-md mx-auto" on:click|stopPropagation>
-			<div class="relative bg-background rounded-lg shadow">
+		<div class="relative mx-auto max-h-full w-full max-w-md rounded-md" on:click|stopPropagation>
+			<div class="relative rounded-lg bg-background shadow">
 				<slot />
 			</div>
 		</div>
