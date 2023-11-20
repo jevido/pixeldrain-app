@@ -1,9 +1,10 @@
 <script>
 	import { logout } from '$lib/api/pixeldrain';
-	import { Button } from '$lib/primitives';
-	import { AlertCircle, X } from '$lib/icons';
+	import { AlertCircle } from '$lib/icons';
 	import { formatBytes } from '$lib/util';
-	import { Block, Modal } from '$lib/components';
+	import { Modal } from '$lib/components';
+	import { Button } from '$lib/components/ui/button';
+	import * as Card from '$lib/components/ui/card';
 
 	export let user = {};
 	export let files = {};
@@ -15,63 +16,53 @@
 		user?.subscription.monthly_transfer_cap - user?.monthly_transfer_used
 	);
 	$: fileSizeLimit = formatBytes(user?.subscription.file_size_limit);
+	$: fileStorageLimit = formatBytes(user?.subscription.storage_space);
 
-	let modalShown = false;
-
-	// Todo: Show logout button without the requirement of statistics.
-	// If an error occurs, you should be able to log out
+	let dialogOpen = false;
 </script>
 
-<Modal bind:modalShown>
-	<button
-		class="absolute right-2.5 top-3 ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm"
-		data-modal-hide="popup-modal"
-		on:click={() => (modalShown = false)}
-	>
-		<X class="h-5 w-5" />
-		<span class="sr-only">Close modal</span>
-	</button>
-	<div class="p-6 text-center">
-		<AlertCircle class="mx-auto mb-4 h-14 w-14" />
-		<h3 class="mb-5 text-lg font-normal">Are you sure you want to logout</h3>
-		<Button variant="destructive" on:click={logout}>Confirm</Button>
-		<Button class="bg-gray-700 text-foreground" on:click={() => (modalShown = false)}>
-			No, cancel
-		</Button>
-	</div>
+<Modal bind:dialogOpen>
+	<AlertCircle class="mx-auto mb-4 h-14 w-14" />
+	<h3 class="mb-3">Are you sure you want to logout</h3>
+	<Button variant="destructive" size="lg" on:click={logout}>Confirm</Button>
+	<Button variant="secondary" size="lg" on:click={() => (dialogOpen = false)}>No, cancel</Button>
 </Modal>
 
-<Block>
-	<h5 class="pointer-events-none select-none text-center text-2xl font-extrabold">Statistics</h5>
-	<dl
-		class="mx-auto grid max-w-screen-xl grid-cols-2 gap-8 p-4 sm:grid-cols-3 sm:p-8 xl:grid-cols-6"
-	>
-		<div class="flex flex-col items-center justify-center">
-			<dt class="mb-2 text-center text-2xl font-extrabold">{spaceUsed}</dt>
-			<dd class="text-muted-foreground">Space used</dd>
+<Card.Root>
+	<Card.Header>
+		<Card.Title class="text-center text-4xl font-extrabold">Statistics</Card.Title>
+	</Card.Header>
+	<Card.Content>
+		<div class="grid grid-cols-2 gap-4 gap-y-6 rounded-md p-4">
+			<div class="text-center text-lg font-extrabold">
+				{spaceUsed}<br /><span class="font-normal text-muted-foreground">space used</span>
+			</div>
+			<div class="text-center text-lg font-extrabold">
+				{spaceRemaining}<br /><span class="font-normal text-muted-foreground">remaining</span>
+			</div>
+			<div class="text-center text-lg font-extrabold">
+				{bandwidthUsed}<br /><span class="font-normal text-muted-foreground">bandwidth used</span>
+			</div>
+			<div class="text-center text-lg font-extrabold">
+				{bandwidthRemaining}<br />
+				<span class="font-normal text-muted-foreground">remaining</span>
+			</div>
+			<div class="text-center text-lg font-extrabold">
+				{files.files.length}<br />
+				<span class="font-normal text-muted-foreground">files uploaded</span>
+			</div>
+			<div class="text-center text-lg font-extrabold">
+				{fileStorageLimit}<br />
+				<span class="font-normal text-muted-foreground">storage limit</span>
+			</div>
+			<div class="col-span-2 text-center text-lg font-extrabold">
+				{fileSizeLimit}<br />
+				<span class="font-normal text-muted-foreground">filesize limit</span>
+			</div>
 		</div>
-		<div class="flex flex-col items-center justify-center">
-			<dt class="mb-2 text-center text-2xl font-extrabold">{spaceRemaining}</dt>
-			<dd class="text-muted-foreground">remaining</dd>
-		</div>
-		<div class="flex flex-col items-center justify-center">
-			<dt class="mb-2 text-center text-2xl font-extrabold">{bandwidthUsed}</dt>
-			<dd class="text-muted-foreground">Bandwidth</dd>
-		</div>
-		<div class="flex flex-col items-center justify-center">
-			<dt class="mb-2 text-center text-2xl font-extrabold">{bandwidthRemaining}</dt>
-			<dd class="text-muted-foreground">remaining</dd>
-		</div>
-		<div class="flex flex-col items-center justify-center">
-			<dt class="mb-2 text-center text-2xl font-extrabold">{files.files.length}</dt>
-			<dd class="text-muted-foreground">Files</dd>
-		</div>
-		<div class="flex flex-col items-center justify-center">
-			<dt class="mb-2 text-center text-2xl font-extrabold">{fileSizeLimit}</dt>
-			<dd class="text-muted-foreground">file size limit</dd>
-		</div>
-	</dl>
-	<div class="flex w-full justify-center">
-		<Button variant="destructive" size="large" on:click={() => (modalShown = true)}>logout</Button>
-	</div>
-</Block>
+	</Card.Content>
+</Card.Root>
+
+<div class="mt-8 flex w-full justify-center">
+	<Button variant="destructive" size="lg" on:click={() => (dialogOpen = true)}>logout</Button>
+</div>

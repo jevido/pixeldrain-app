@@ -26,7 +26,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"bits-ui": "^0.9.7",
+		"bits-ui": "^0.9.8",
 		"clsx": "^2.0.0",
 		"cmdk-sv": "^0.0.7",
 		"fs": "^0.0.1-security",

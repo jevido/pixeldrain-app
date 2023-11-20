@@ -1,21 +1,18 @@
 <script>
-	export let modalShown = false;
-
-	function close() {
-		modalShown = false;
-	}
+	import * as Dialog from '$lib/components/ui/dialog';
+	export let dialogOpen = false;
+	export let title = '';
 </script>
 
-{#if modalShown}
-	<div
-		class="fixed left-0 top-0 z-50 flex h-screen w-screen items-center rounded bg-background/60"
-		tabindex="-1"
-		on:click={close}
-	>
-		<div class="relative mx-auto max-h-full w-full max-w-md rounded-md" on:click|stopPropagation>
-			<div class="relative rounded-lg bg-background shadow">
+<Dialog.Root bind:open={dialogOpen}>
+	<Dialog.Content class="px-2">
+		<Dialog.Header>
+			{#if title}
+				<Dialog.Title>{title}</Dialog.Title>
+			{/if}
+			<Dialog.Description class="mb-5 text-center text-lg font-normal">
 				<slot />
-			</div>
-		</div>
-	</div>
-{/if}
+			</Dialog.Description>
+		</Dialog.Header>
+	</Dialog.Content>
+</Dialog.Root>
