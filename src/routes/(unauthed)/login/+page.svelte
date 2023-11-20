@@ -1,5 +1,4 @@
 <script>
-	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
 	import { Mail, Lock } from '$lib/icons';
 
@@ -32,7 +31,7 @@
 
 	// Authentication is done per api-request,
 	// so this will just send you back to login in-case of authentication falsication
-	if (browser && getCookie('pd_auth_key')) {
+	if (getCookie('pd_auth_key')) {
 		goto('/dashboard');
 	}
 </script>

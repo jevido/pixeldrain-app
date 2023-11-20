@@ -18,8 +18,8 @@
 		<a href="/dashboard" class="inline-flex flex-col items-center justify-center px-5">
 			<Home class={$page.url.pathname !== '/dashboard' ? 'text-muted-foreground' : ''} />
 		</a>
-		<a href="/subscriptions" class="inline-flex flex-col items-center justify-center px-5">
-			<Wallet class={$page.url.pathname !== '/subscriptions' ? 'text-muted-foreground' : ''} />
+		<a href="/tree" class="inline-flex flex-col items-center justify-center px-5">
+			<Wallet class={$page.url.pathname !== '/tree' ? 'text-muted-foreground' : ''} />
 		</a>
 		<div class="flex items-center justify-center">
 			<label

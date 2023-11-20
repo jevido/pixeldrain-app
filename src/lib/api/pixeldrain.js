@@ -16,7 +16,7 @@ class Api {
 		const data = await fetch(this.endpoint + resource, {
 			credentials: 'include'
 		});
-		return await data.json();
+		return await this.validateResponse(data);
 	}
 
 	async post(resource, formData, extra) {
@@ -26,8 +26,20 @@ class Api {
 			credentials: 'include',
 			...extra
 		});
-		const json = await data.json();
 
+		return await this.validateResponse(data);
+	}
+
+	async delete(resource) {
+		const data = await fetch(this.endpoint + resource, {
+			method: 'DELETE',
+			credentials: 'include'
+		});
+		return await data.json();
+	}
+
+	async validateResponse(response) {
+		const json = await response.json()
 		if (json?.success === false) {
 			if (json.value == 'authentication_required' || json.value == 'authentication_failed') {
 				await logout();
@@ -39,14 +51,6 @@ class Api {
 		}
 
 		return json;
-	}
-
-	async delete(resource) {
-		const data = await fetch(this.endpoint + resource, {
-			method: 'DELETE',
-			credentials: 'include'
-		});
-		return await data.json();
 	}
 }
 
@@ -71,7 +75,8 @@ const logout = async () => {
 	// delete cookie
 	await api.delete('user/session');
 	deleteCookie('pd_auth_key');
-	goto('/');
+	console.debug('ello?')
+	goto('/login');
 };
 
 const Files = () => {
