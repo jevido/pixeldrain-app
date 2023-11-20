@@ -28,6 +28,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@tauri-apps/api": "^1.5.1",
 		"bits-ui": "^0.9.8",
 		"clsx": "^2.0.0",
 		"cmdk-sv": "^0.0.7",

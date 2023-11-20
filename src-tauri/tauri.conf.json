@@ -12,7 +12,9 @@
   },
   "tauri": {
     "allowlist": {
-      "all": false
+      "shell": {
+        "open": true
+      }
     },
     "bundle": {
       "active": true,
@@ -56,10 +58,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 760,
         "resizable": true,
         "title": "PixelDrain",
-        "width": 800
+        "width": 400
       }
     ]
   }

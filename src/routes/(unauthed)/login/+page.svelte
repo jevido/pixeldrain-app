@@ -1,4 +1,5 @@
 <script>
+	import { open } from '@tauri-apps/api/shell';
 	import { goto } from '$app/navigation';
 	import { Mail, Lock } from '$lib/icons';
 
@@ -33,6 +34,14 @@
 	// so this will just send you back to login in-case of authentication falsication
 	if (getCookie('pd_auth_key')) {
 		goto('/dashboard');
+	}
+
+	async function registerAccount() {
+		// opens the given URL on the default browser:
+		await open('https://pixeldrain.com/register');
+	}
+	async function forgotPassword() {
+		await open('https://pixeldrain.com/password_reset');
 	}
 </script>
 
@@ -71,10 +80,9 @@
 							<label for="password" class="mb-2 flex justify-between text-sm font-medium">
 								Your password
 								<a
-									href="https://pixeldrain.com/password_reset"
-									target="_BLANK"
 									tabindex="-1"
-									class="truncate text-sm hover:text-accent-foreground focus:outline-none"
+									class="cursor-pointer truncate text-sm hover:text-accent-foreground focus:outline-none"
+									on:click={forgotPassword}
 								>
 									Forgot password?
 								</a>
@@ -107,10 +115,14 @@
 
 					<p class="mt-6 text-center font-medium">
 						Don't have an account yet? <br />
-						<a class="underline" href="https://pixeldrain.com/register" target="_BLANK">
-							Sign up
-						</a>.
+						<a class="cursor-pointer underline" on:click={registerAccount}> Sign up </a>
 					</p>
+
+					<p class="mt-6 text-center font-medium">
+						or
+						<a class="underline" href="/">return homepage</a>
+					</p>
+					
 				</div>
 			</div>
 		</div>
