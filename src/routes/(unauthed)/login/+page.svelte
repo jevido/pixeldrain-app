@@ -118,11 +118,10 @@
 						<a class="cursor-pointer underline" on:click={registerAccount}> Sign up </a>
 					</p>
 
-					<p class="mt-6 text-center font-medium">
+					<p class="font-small mt-6 text-center">
 						or
-						<a class="underline" href="/">return homepage</a>
+						<a class="underline" href="/">go back</a>
 					</p>
-					
 				</div>
 			</div>
 		</div>
