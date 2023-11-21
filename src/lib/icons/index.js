@@ -7,5 +7,23 @@ import AlertCircle from './AlertCicle.svelte';
 import X from './X.svelte';
 import Mail from './Mail.svelte';
 import Lock from './Lock.svelte';
+import Mastodon from './Mastodon.svelte';
+import Patreon from './Patreon.svelte';
+import Twitter from './Twitter.svelte';
+import Reddit from './Reddit.svelte';
 
-export { Home, Settings, Library, Plus, Wallet, AlertCircle, X, Mail, Lock };
+export {
+	Home,
+	Patreon,
+	Twitter,
+	Reddit,
+	Settings,
+	Library,
+	Plus,
+	Wallet,
+	AlertCircle,
+	X,
+	Mail,
+	Lock,
+	Mastodon
+};

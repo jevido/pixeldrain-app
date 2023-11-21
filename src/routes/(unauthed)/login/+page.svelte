@@ -115,7 +115,14 @@
 
 					<p class="mt-6 text-center font-medium">
 						Don't have an account yet? <br />
-						<a class="cursor-pointer underline" on:click={registerAccount}> Sign up </a>
+						<a
+							href="https://pixeldrain.com/register"
+							target="_BLANK"
+							class="cursor-pointer underline"
+							on:click={registerAccount}
+						>
+							Sign up
+						</a>
 					</p>
 
 					<p class="font-small mt-6 text-center">
