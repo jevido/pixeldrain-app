@@ -58,7 +58,7 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 760,
+        "height": 400,
         "resizable": true,
         "title": "PixelDrain",
         "width": 400
