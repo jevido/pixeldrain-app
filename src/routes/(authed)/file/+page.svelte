@@ -46,7 +46,7 @@
 		renameOpen = false;
 	}
 
-	async function share(file) {
+	async function share() {
 		try {
 			await navigator.share({
 				title: file.name,
