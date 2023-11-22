@@ -544,9 +544,9 @@
 		</div>
 
 		<a
-			href="https://pixeldrain.com/register"
+			href="https://pixeldrain.com#pro"
 			target="_BLANK"
-			on:click={() => open('https://pixeldrain.com/register')}
+			on:click={() => open('https://pixeldrain.com#pro')}
 			class="flex justify-center text-lg underline"
 		>
 			other subscriptions
