@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"build-app": "npm run tauri build",
 		"preview": "vite preview",
 		"lint": "prettier --plugin-search-dir . --check .",
 		"tauri": "tauri",

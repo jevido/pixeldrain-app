@@ -10,8 +10,8 @@
 	let file;
 
 	async function load() {
-		const data = await api.get(`file/${$page.params.id}/info`);
-		console.debug(data);
+		const id = $page.url.searchParams.get('id');
+		const data = await api.get(`file/${id}/info`);
 
 		file = data;
 		return data;

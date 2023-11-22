@@ -11,7 +11,7 @@
 			<ul role="list" class="divide-y divide-gray-200 overflow-y-auto dark:divide-gray-700">
 				{#each $files as file}
 					<li class="py-3 sm:py-4">
-						<a href={file.id ? `/file/${file.id}` : undefined} class="flex items-center space-x-4">
+						<a href={file.id ? `/file?id=${file.id}` : undefined} class="flex items-center space-x-4">
 							<div class="min-w-0 flex-1">
 								<p class="truncate text-sm font-medium">
 									{file.name}
