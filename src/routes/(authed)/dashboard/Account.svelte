@@ -18,12 +18,15 @@
 	$: fileSizeLimit = formatBytes(user?.subscription.file_size_limit);
 	$: fileStorageLimit = formatBytes(user?.subscription.storage_space);
 
-	let dialogOpen = false;
+	let dialogOpen = true;
 </script>
 
 <Modal bind:dialogOpen>
-	<AlertCircle class="mx-auto mb-4 h-14 w-14" />
-	<h3 class="mb-3">Are you sure you want to logout</h3>
+	<div slot="description">
+		<AlertCircle class="mx-auto mb-4 h-14 w-14" />
+		Are you sure you want to logout
+	</div>
+
 	<Button variant="destructive" size="lg" on:click={logout}>Confirm</Button>
 	<Button variant="secondary" size="lg" on:click={() => (dialogOpen = false)}>No, cancel</Button>
 </Modal>
