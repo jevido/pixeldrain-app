@@ -18,8 +18,12 @@
 			name: item.name.toLowerCase(),
 			size: formatBytes(item.size),
 			date: formatDate(item.date_upload),
+			date_upload: item.date_upload,
 			mime_type: item.mime_type
 		}));
+		files = files.sort((a,b) => {
+			return a.date_upload <= b.date_upload
+		});
 	}
 
 	const filters = Object.values(mimetypes).map((item) => ({
