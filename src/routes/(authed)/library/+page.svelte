@@ -69,7 +69,7 @@
 {:then}
 	{#if filteredFiles.length > 0}
 		<VirtualList items={filteredFiles} let:item>
-			<a href="/file?id={item.id}" class="flex px-4 py-2">
+			<a href="/file/{item.id}" class="flex px-4 py-2">
 				{#if !$preferences.dataSaving}
 					<img
 						class="h-8 w-8 rounded-full"

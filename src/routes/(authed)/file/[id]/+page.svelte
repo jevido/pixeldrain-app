@@ -15,8 +15,7 @@
 	let newName = '';
 
 	async function load() {
-		const id = $page.url.searchParams.get('id');
-		const data = await api.get(`file/${id}/info`);
+		const data = await api.get(`file/${$page.params.id}/info`);
 
 		file = data;
 

@@ -17,7 +17,7 @@
 						<span class="w-full truncate text-sm font-medium">{file.name}</span>
 
 						{#if file.id}
-							<a href="/file?id={file.id}">View</a>
+							<a href="/file/{file.id}">View</a>
 						{:else}
 							<div class="relative w-full">
 								<Progress value={file.progress} max={100} class="w-full" />
