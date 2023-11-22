@@ -18,7 +18,7 @@
 	$: fileSizeLimit = formatBytes(user?.subscription.file_size_limit);
 	$: fileStorageLimit = formatBytes(user?.subscription.storage_space);
 
-	let dialogOpen = true;
+	let dialogOpen = false;
 </script>
 
 <Modal bind:dialogOpen>
