@@ -4,7 +4,6 @@
 
 	import Dashboard from './Dashboard.svelte';
 	import Account from './Account.svelte';
-	import Pricing from './Pricing.svelte';
 	import RecentlyUploaded from './RecentlyUploaded.svelte';
 
 	async function load() {
@@ -23,7 +22,7 @@
 		<section class="mt-8">
 			<RecentlyUploaded />
 		</section>
-		<Pricing />
+
 		<section class="mt-8">
 			<Account {user} {files} />
 		</section>
