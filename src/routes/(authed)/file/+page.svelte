@@ -1,6 +1,10 @@
 <script>
 	import * as Card from '$lib/components/ui/card';
+	import { Modal } from '$lib/components';
 	import { Button, buttonVariants } from '$lib/components/ui/button';
+	import { Input } from '$lib/components/ui/input';
+	import { Label } from '$lib/components/ui/label';
+
 	import { formatDate, formatBytes } from '$lib/util/misc';
 
 	import { page } from '$app/stores';
@@ -8,12 +12,16 @@
 	import { Spinner } from '$lib/components';
 
 	let file;
+	let newName = '';
 
 	async function load() {
 		const id = $page.url.searchParams.get('id');
 		const data = await api.get(`file/${id}/info`);
 
 		file = data;
+
+		console.debug(file);
+		newName = file.name;
 		return data;
 	}
 
@@ -30,11 +38,12 @@
 	async function rename() {
 		const formData = new FormData();
 		formData.append('action', 'rename');
-		formData.append('name', newFileName);
+		formData.append('name', newName);
 
 		await api.post(`file/${file.id}`, formData);
 
-		doLoad = load();
+		load();
+		renameOpen = false;
 	}
 
 	async function share(file) {
@@ -56,16 +65,30 @@
 		}
 	}
 
-	function openRenameModal() {
-		console.debug('todo');
-	}
+	let renameOpen = false;
 </script>
 
 {#await load()}
 	<div class="fixed flex h-full w-full items-center justify-center">
 		<Spinner class="h-12 w-12" />
 	</div>
-{:then file}
+{:then}
+	<Modal bind:dialogOpen={renameOpen} title="Rename">
+		<div class="grid grid-cols-4 items-center gap-4">
+			<Label class="text-right">new name</Label>
+			<Input
+				id="rename"
+				bind:value={newName}
+				on:keyup={(e) => e.key === 'Enter' && rename()}
+				class="col-span-3"
+			/>
+		</div>
+
+		<div slot="footer">
+			<Button on:click={rename}>Save changes</Button>
+		</div>
+	</Modal>
+
 	<Card.Root class="mx-8 mt-8">
 		<Card.Header>
 			<Card.Title>{file.name}</Card.Title>
@@ -78,7 +101,7 @@
 				<img src="/api/{file.thumbnail_href}" />
 			</div>
 			<div class="grid grid-cols-2 gap-4 rounded-md border p-4">
-				<Button variant="outline" on:click={openRenameModal}>Rename</Button>
+				<Button variant="outline" on:click={() => (renameOpen = true)}>Rename</Button>
 				<a
 					class={buttonVariants({ variant: 'outline' })}
 					href="/api/file/{file.id}"

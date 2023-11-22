@@ -5,14 +5,24 @@
 </script>
 
 <Dialog.Root bind:open={dialogOpen}>
-	<Dialog.Content class="px-2">
+	<Dialog.Content>
 		<Dialog.Header>
 			{#if title}
 				<Dialog.Title>{title}</Dialog.Title>
 			{/if}
-			<Dialog.Description class="mb-5 text-center text-lg font-normal">
-				<slot />
-			</Dialog.Description>
+			{#if $$slots.description}
+				<Dialog.Description class="text-center text-lg font-normal">
+					<slot name="description"/>
+				</Dialog.Description>
+			{/if}
 		</Dialog.Header>
+
+		<slot />
+
+		{#if $$slots.footer}
+			<Dialog.Footer>
+				<slot name="footer" />
+			</Dialog.Footer>
+		{/if}
 	</Dialog.Content>
 </Dialog.Root>
