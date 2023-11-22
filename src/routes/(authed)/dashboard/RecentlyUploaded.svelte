@@ -8,7 +8,7 @@
 {#if $files.length > 0}
 	<Card.Root>
 		<Card.Header>
-			<Card.Title class="text-center text-4xl font-extrabold">Statistics</Card.Title>
+			<Card.Title class="text-center text-4xl font-extrabold">Recent uploads</Card.Title>
 		</Card.Header>
 		<Card.Content>
 			<ul>
