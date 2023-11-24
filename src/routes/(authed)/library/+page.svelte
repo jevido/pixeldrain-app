@@ -21,8 +21,8 @@
 			date_upload: item.date_upload,
 			mime_type: item.mime_type
 		}));
-		files = files.sort((a,b) => {
-			return a.date_upload <= b.date_upload
+		files = files.sort((a, b) => {
+			return a.date_upload <= b.date_upload;
 		});
 	}
 
@@ -93,8 +93,6 @@
 				All {files.length} files are filtered out
 			{:else}
 				You haven't uploaded any files yet
-				{filteredFiles.length}
-				{files.length}
 			{/if}
 		</div>
 	{/if}
