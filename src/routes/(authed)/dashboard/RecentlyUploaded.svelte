@@ -1,5 +1,4 @@
 <script>
-	import { Block } from '$lib/components';
 	import { files } from '$lib/api/pixeldrain';
 	import { Progress } from '$lib/components/ui/progress';
 	import * as Card from '$lib/components/ui/card';
