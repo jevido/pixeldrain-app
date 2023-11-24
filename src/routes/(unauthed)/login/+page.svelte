@@ -35,14 +35,6 @@
 	if (getCookie('pd_auth_key')) {
 		goto('/dashboard');
 	}
-
-	async function registerAccount() {
-		// opens the given URL on the default browser:
-		await open('https://pixeldrain.com/register');
-	}
-	async function forgotPassword() {
-		await open('https://pixeldrain.com/password_reset');
-	}
 </script>
 
 <div class="flex h-screen justify-center">
@@ -82,7 +74,7 @@
 								<a
 									tabindex="-1"
 									class="cursor-pointer truncate text-sm hover:text-accent-foreground focus:outline-none"
-									on:click={forgotPassword}
+									on:click={() => open('https://pixeldrain.com/password_reset')}
 								>
 									Forgot password?
 								</a>
@@ -119,7 +111,7 @@
 							href="https://pixeldrain.com/register"
 							target="_BLANK"
 							class="cursor-pointer underline"
-							on:click={registerAccount}
+							on:click={() => open('https://pixeldrain.com/register')}
 						>
 							Sign up
 						</a>
@@ -134,9 +126,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	input:autofill {
-		background: none; /* or any other */
-	}
-</style>
