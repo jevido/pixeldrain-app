@@ -1,7 +1,6 @@
 <script setup>
 	import { BottomNavigation } from '$lib/components';
 	import { Spinner } from '$lib/components';
-	import { fetchUserData } from '$lib/api/pixeldrain';
 
 	import { goto } from '$app/navigation';
 	import { getCookie } from '$lib/util';
@@ -13,8 +12,6 @@
 			goto('/login');
 			return;
 		}
-
-		const userData = await fetchUserData();
 	}
 </script>
 
