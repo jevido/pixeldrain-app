@@ -16,13 +16,12 @@ function storable(data) {
 		},
 		update: (cb) => {
 			const updatedStore = cb(get(store));
-
 			isBrowser && (localStorage.storable = JSON.stringify(updatedStore));
-			set(updatedStore);
+			update(updatedStore);
 		},
 		reset: () => {
 			isBrowser && (localStorage.storable = JSON.stringify(_defaults));
-			set(_defaults);
+			set({ ..._defaults });
 		}
 	};
 }
