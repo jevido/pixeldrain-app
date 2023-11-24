@@ -58,10 +58,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 400,
+        "height": 460,
         "resizable": true,
         "title": "PixelDrain",
-        "width": 400
+        "width": 380
       }
     ]
   }
